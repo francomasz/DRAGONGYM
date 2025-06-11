@@ -1,0 +1,145 @@
+html {
+    font-family: 'montserrat',sans-serif;
+}
+header {
+    background-color: #364552;
+    color: white;
+    width: 100%;
+    padding: 3rem 2rem;
+}
+header h1{
+    font-size: 4rem;
+    text-align: center;
+}
+#cl {
+    background-color: #4CAF50;
+    color: white; 
+    text-align: center;
+    padding: 15px 30px; 
+    border-radius: 8px; 
+    margin: 20px auto 30px auto; 
+    width: fit-content; 
+    max-width: 90%; 
+    font-size: 1.8rem; 
+    font-weight: bold;
+}
+/* Estilos generales del formulario */
+form {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Títulos de los grupos */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #2d3748;
+    font-size: 0.95rem;
+}
+
+/* Campos de entrada */
+input[type="text"],
+input[type="email"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background-color: #f8fafc;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+/* Efecto al enfocar campos */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+select:focus {
+    outline: none;
+    border-color: #4299e1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+    background-color: #ffffff;
+}
+
+/* Estilo para el select */
+select {
+    appearance: none;
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 1em;
+}
+
+/* Botón de enviar */
+button[type="submit"] {
+    width: 100%;
+    padding: 14px;
+    background-color: #4299e1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+button[type="submit"]:hover {
+    background-color: #3182ce;
+}
+
+button[type="submit"]:active {
+    transform: translateY(1px);
+}
+
+/* Estilo para campos requeridos */
+input:required + label::after,
+select:required + label::after {
+    content: " *";
+    color: #e53e3e;
+}
+
+/* Diseño responsive */
+@media (max-width: 640px) {
+    form {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+}
+
+footer{
+    background-color: #222;
+    padding: 3rem;
+    color: #fff;
+}
+
+footer section {
+    float: right;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer a {
+    transition: color 0.3s ease;
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: blue;
+}

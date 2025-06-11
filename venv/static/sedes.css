@@ -1,0 +1,86 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+.search-container {
+    margin-bottom: 30px;
+}
+
+.search-box { 
+    padding: 10px;
+    width: 300px; 
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.gym-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.gym-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    width: 300px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.gym-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.gym-address {
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.gym-location {
+    color: #888;
+    font-size: 0.9em;
+}
+
+.price-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.price-table th, .price-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.price-table th {
+    background-color: #f2f2f2;
+}
+
+.btn {
+    background-color: #ff6b00;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.green-btn { /* Specific class for the green button */
+    background-color: #4CAF50;
+}
+
+.filters {
+    margin-bottom: 20px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}

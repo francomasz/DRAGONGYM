@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nuestras Sedes</title>
+    <link rel="stylesheet" href="/static/sedes.css">
+</head>
+<body>
+    <h1>¿Dónde quieres entrenar?</h1>
+    
+    <div class="search-container">
+        <input type="text" class="search-box" placeholder="Ingresa tu zona, ciudad o Código Postal">
+    </div>
+    
+    <p>{{ sedes|length }} locales encontrados</p>
+    
+    <div class="gym-container">
+        {% for sede in sedes %}
+        <div class="gym-card">
+            <div class="gym-name">{{ sede.NOMBRE_SEDE }}</div>
+            <div class="gym-address">{{ sede.DIRECCION }}</div>
+            
+            <table class="price-table">
+                <tr>
+                    <th>SAIYAN</th>
+                    <th>SUPER SAIYAN</th>
+                    <th>SUPER SAIYAN GOD</th>
+                </tr>
+                <tr>
+                    <td>S/49.90</td>
+                    <td>S/99.90</td>
+                    <td>S/149.90</td>
+                </tr>
+            </table>
+            
+            <div class="button-group">
+                <a href="{{ url_for('planes') }}">
+                    <button class="btn green-btn">Inscríbete ya!</button>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

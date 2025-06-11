@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro de Clientes</title>
+    <link rel="stylesheet" href="/static/register_client.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+    <h1 id="titulo">Bienvenido a DragonFit</h1>
+    </header>
+    <h1 id="cl">Registrate</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    
+    <form method="POST" action="{{ url_for('clientes') }}">
+        <div class="form-group">
+            <label for="cod_cliente">Código Cliente:</label>
+            <input type="text" id="cod_cliente" name="cod_cliente" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="dni">DNI:</label>
+            <input type="text" id="dni" name="dni" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="nombres">Nombres:</label>
+            <input type="text" id="nombres" name="nombres" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" id="apellidos" name="apellidos">
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+        </div>
+        
+        <div class="form-group">
+            <label for="telefono">Teléfono:</label>
+            <input type="text" id="telefono" name="telefono">
+        </div>
+        
+        <div class="form-group">
+            <label for="sexo">Sexo:</label>
+            <select id="sexo" name="sexo">
+                <option value="MASCULINO">Masculino</option>
+                <option value="FEMENINO">Femenino</option>
+                <option value="OTRO">Otro</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento">
+        </div>
+        
+        <button type="submit">Registrar</button>
+    </form>
+    
+    <div style="margin-top: 20px;">
+        <a href="{{ url_for('index') }}">← Volver al inicio</a>
+    </div>
+</body>
+<footer> 
+    <section> 
+        <a href="#titulo">ir a comienzo</a>
+        <a href="mailto:francosolimano10@gmail.com">Contactame aqui</a>
+    </section>
+    <p>Copyright 2025</p>
+</footer>
+</html>

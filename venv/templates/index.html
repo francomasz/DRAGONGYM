@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>DragonFit - Inicio</title>
+    <link rel="stylesheet" href="/static/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header> 
+    <h1 id="titulo">Bienvenido a DragonFit</h1>
+    </header>
+    <nav>
+        <a href="{{ url_for('sedes') }}" ><img id="porta" src="/static/portada.jpg"></a>
+    </nav>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    
+</body>
+<footer> 
+    <section> 
+        <a href="#titulo">ir a comienzo</a>
+        <a href="mailto:francosolimano10@gmail.com">Contactame aqui</a>
+    </section>
+    <p>Copyright 2025</p>
+</footer>
+
+</html>

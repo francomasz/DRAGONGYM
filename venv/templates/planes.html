@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planes Disponibles</title>
+    <!-- Enlace a Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Enlace a la fuente Inter de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Enlace a tu archivo CSS externo -->
+    <link rel="stylesheet" href="/static/planes.css">
+</head>
+<body>
+    <div class="container">
+        <h1>SELECCIONA TU PLAN</h1>
+
+        <div class="plan-container">
+            <!-- Plan 1 -->
+            <div class="plan-card">
+                <div class="plan-title">Plan Saiyan</div>
+                <div class="plan-price">S/ 49.90/mes</div>
+                <div class="plan-details">
+                    <div class="plan-detail">
+                        <span>Inscripción</span>
+                        <span>Gratis</span>
+                    </div>
+                    <div class="plan-detail">
+                        <span>Mantenimiento</span>
+                        <span>S/ 99.90/año</span>
+                    </div>
+                    <div class="plan-detail">
+                        <span>Duración</span>
+                        <span>4 semanas</span>
+                    </div>
+                </div>
+                <div class="benefits">
+                    <h3>MÁS BENEFICIOS</h3>
+                    <div class="benefit-item">Acceso a sala de máquinas</div>
+                    <div class="benefit-item">Clases grupales limitadas</div>
+                </div>
+                <a href="{{ url_for('clientes') }}" class="w-full">
+                    <button class="select-btn">Seleccionar</button>
+                </a>
+            </div>
+
+            <!-- Plan 2 -->
+            <div class="plan-card">
+                <div class="plan-title">Plan Super Saiyan</div>
+                <div class="plan-price">S/ 99.90/mes</div>
+                <div class="plan-details">
+                    <div class="plan-detail">
+                        <span>Inscripción</span>
+                        <span>Gratis</span>
+                    </div>
+                    <div class="plan-detail">
+                        <span>Mantenimiento</span>
+                        <span>S/ 99.90/año</span>
+                    </div>
+                    <div class="plan-detail">
+                        <span>Duración</span>
+                        <span>8 semanas</span>
+                    </div>
+                </div>
+                <div class="benefits">
+                    <h3>MÁS BENEFICIOS</h3>
+                    <div class="benefit-item">Acceso ilimitado a sala de máquinas</div>
+                    <div class="benefit-item">Todas las clases grupales</div>
+                    <div class="benefit-item">Acceso a una sede adicional</div>
+                </div>
+                <a href="{{ url_for('clientes') }}" class="w-full">
+                    <button class="select-btn">Seleccionar</button>
+                </a>
+            </div>
+
+            <!-- Plan 3 -->
+            <div class="plan-card">
+                <div class="plan-title">Plan Super Saiyan god</div>
+                <div class="plan-price">S/ 149.90/mes</div>
+                <div class="plan-details">
+                    <div class="plan-detail">
+                        <span>Inscripción</span>
+                        <span>Gratis</span>
+                    </div>
+                    <div class="plan-detail">
+                        <span>Mantenimiento</span>
+                        <span>S/ 99.90/año</span>
+                    </div>
+                    <div class="plan-detail">
+                        <span>Duración</span>
+                        <span>12 semanas</span>
+                    </div>
+                </div>
+                <div class="benefits">
+                    <h3>MÁS BENEFICIOS</h3>
+                    <div class="benefit-item">Acceso ilimitado a todas las sedes</div>
+                    <div class="benefit-item">Entrenador personal (1 sesión/mes)</div>
+                    <div class="benefit-item">Evaluación nutricional</div>
+                    <div class="benefit-item">5 invitados al mes</div>
+                </div>
+                <a href="{{ url_for('clientes') }}" class="w-full">
+                    <button class="select-btn">Seleccionar</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="checkout-section">
+            <div class="checkout-title">Detalles de la compra</div>
+            <div class="checkout-details">
+                <div><strong>Mail Plaza Huancayo</strong></div>
+                <div>As. Ferrocarril 145, Huancayo, Junín, 145 - Huancayo, J...</div>
+                <div><a href="#">Ver academia</a></div>
+            </div>
+
+            <div class="checkout-details">
+                <div><strong>Plan Super Saiyan god</strong></div>
+                <div>Disfruta de beneficios exclusivos con el Plan Black:</div>
+                <div class="mt-2"> {# Replaced style="margin-top: 10px;" with Tailwind class #}
+                    <input type="checkbox" id="add-benefits">
+                    <label for="add-benefits">5 invitados al mes en el gimnasio que quieras</label>
+                </div>
+            </div>
+
+            <div class="mt-5"> {# Replaced style="margin-top: 20px;" with Tailwind class #}
+                <div><strong>Añadir cupón</strong></div>
+                <input type="text" placeholder="Ingresa tu cupón" class="p-2 w-full mt-1"> {# Replaced inline style with Tailwind classes #}
+            </div>
+
+            <button class="continue-btn">Continuar al registro</button>
+        </div>
+    </div>
+</body>
+</html>

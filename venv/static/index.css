@@ -1,0 +1,50 @@
+html {
+    font-family: 'montserrat',sans-serif;
+}
+header {
+    background-color: #364552;
+    color: white;
+    width: 100%;
+    padding: 3rem 2rem;
+}
+header h1{
+    font-size: 4rem;
+    text-align: center;
+}
+
+#porta {
+    width: 90%;
+    border-radius:10px;
+    display: block;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+footer{
+    background-color: #222;
+    padding: 3rem;
+    color: #fff;
+}
+
+footer section {
+    float: right;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer a {
+    transition: color 0.3s ease;
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: blue;
+}
+
+
