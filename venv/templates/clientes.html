@@ -1,84 +1,118 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Clientes</title>
     <link rel="stylesheet" href="/static/register_client.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-    <h1 id="titulo">Bienvenido a DragonFit</h1>
+        <h1 id="titulo">Bienvenido a DragonFit</h1>
     </header>
-    <h1 id="cl">Registrate</h1>
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            <div class="flash-messages">
-                {% for category, message in messages %}
-                    <div class="alert alert-{{ category }}">{{ message }}</div>
-                {% endfor %}
-            </div>
-        {% endif %}
-    {% endwith %}
     
-    <form method="POST" action="{{ url_for('clientes') }}">
-        <div class="form-group">
-            <label for="cod_cliente">Código Cliente:</label>
-            <input type="text" id="cod_cliente" name="cod_cliente" required>
-        </div>
-        
-        <div class="form-group">
-            <label for="dni">DNI:</label>
-            <input type="text" id="dni" name="dni" required>
-        </div>
-        
-        <div class="form-group">
-            <label for="nombres">Nombres:</label>
-            <input type="text" id="nombres" name="nombres" required>
-        </div>
-        
-        <div class="form-group">
-            <label for="apellidos">Apellidos:</label>
-            <input type="text" id="apellidos" name="apellidos">
-        </div>
-        
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email">
-        </div>
-        
-        <div class="form-group">
-            <label for="telefono">Teléfono:</label>
-            <input type="text" id="telefono" name="telefono">
-        </div>
-        
-        <div class="form-group">
-            <label for="sexo">Sexo:</label>
-            <select id="sexo" name="sexo">
-                <option value="MASCULINO">Masculino</option>
-                <option value="FEMENINO">Femenino</option>
-                <option value="OTRO">Otro</option>
-            </select>
-        </div>
-        
-        <div class="form-group">
-            <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
-            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento">
-        </div>
-        
-        <button type="submit">Registrar</button>
-    </form>
-    
-    <div style="margin-top: 20px;">
-        <a href="{{ url_for('index') }}">← Volver al inicio</a>
+    <div class="main-container">
+        <main class="content-container">
+            <h2 id="cl">Registrate</h2>
+            
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="flash-messages">
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}">
+                                {{ message }}
+                                {% if category == 'success' %}
+                                    <script>
+                                        setTimeout(() => {
+                                            window.location.href = "{{ url_for('pagos') }}";
+                                        }, 1500);
+                                    </script>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            
+            <form method="POST" action="{{ url_for('clientes') }}" id="registroForm">
+                <div class="form-group">
+                    <label for="cod_cliente">Código Cliente:</label>
+                    <input type="text" id="cod_cliente" name="cod_cliente" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dni">DNI:</label>
+                    <input type="text" id="dni" name="dni" required pattern="[0-9]{8}" title="Ingrese 8 dígitos numéricos">
+                </div>
+                
+                <div class="form-group">
+                    <label for="nombres">Nombres:</label>
+                    <input type="text" id="nombres" name="nombres" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="apellidos">Apellidos:</label>
+                    <input type="text" id="apellidos" name="apellidos">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="telefono">Teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono" pattern="[0-9]{9}" title="Ingrese 9 dígitos numéricos">
+                </div>
+                
+                <div class="form-group">
+                    <label for="sexo">Sexo:</label>
+                    <select id="sexo" name="sexo">
+                        <option value="MASCULINO">Masculino</option>
+                        <option value="FEMENINO">Femenino</option>
+                        <option value="OTRO">Otro</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+                    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento">
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" id="submitBtn">Registrar</button>
+                    <a href="{{ url_for('index') }}" class="btn-back">← Volver al inicio</a>
+                </div>
+            </form>
+        </main>
     </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#titulo" class="footer-link">
+                    <i class="fas fa-arrow-up"></i> Ir a comienzo
+                </a>
+                <a href="mailto:francosolimano10@gmail.com" class="footer-link">
+                    <i class="fas fa-envelope"></i> Contáctame aquí
+                </a>
+            </div>
+            <div class="social-links">
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p class="copyright">Copyright © 2025 DragonFit. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="/static/js/clientes.js"></script>
 </body>
-<footer> 
-    <section> 
-        <a href="#titulo">ir a comienzo</a>
-        <a href="mailto:francosolimano10@gmail.com">Contactame aqui</a>
-    </section>
-    <p>Copyright 2025</p>
-</footer>
 </html>

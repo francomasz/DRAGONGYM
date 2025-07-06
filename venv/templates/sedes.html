@@ -3,42 +3,78 @@
 <head>
     <title>Nuestras Sedes</title>
     <link rel="stylesheet" href="/static/sedes.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>¿Dónde quieres entrenar?</h1>
+    <header> 
+        <h1 id="titulo">Bienvenido a DragonFit</h1>
+    </header>
     
-    <div class="search-container">
-        <input type="text" class="search-box" placeholder="Ingresa tu zona, ciudad o Código Postal">
+    <div class="main-container">
+        <h1>¿Dónde quieres entrenar?</h1>
+        
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="Ingresa tu zona, ciudad o Código Postal">
+        </div>
+        
+        <p>{{ sedes|length }} locales encontrados</p>
+        
+        <div class="gym-container">
+            {% for sede in sedes %}
+            <div class="gym-card">
+                <img src="{{ url_for('static', filename='img/sedes/sede_' ~ loop.index ~ '.png') }}" 
+                 alt="{{ sede.NOMBRE_SEDE }}" class="gym-image">
+                <div class="gym-name">{{ sede.NOMBRE_SEDE }}</div>
+                <div class="gym-address">{{ sede.DIRECCION }}</div>
+                
+                <table class="price-table">
+                    <tr>
+                        <th>SAIYAN</th>
+                        <th>SUPER SAIYAN</th>
+                        <th>SUPER SAIYAN GOD</th>
+                    </tr>
+                    <tr>
+                        <td>S/49.90</td>
+                        <td>S/99.90</td>
+                        <td>S/149.90</td>
+                    </tr>
+                </table>
+                
+                <div class="button-group">
+                    <a href="{{ url_for('planes') }}">
+                        <button class="btn green-btn">Inscríbete ya!</button>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
     
-    <p>{{ sedes|length }} locales encontrados</p>
-    
-    <div class="gym-container">
-        {% for sede in sedes %}
-        <div class="gym-card">
-            <div class="gym-name">{{ sede.NOMBRE_SEDE }}</div>
-            <div class="gym-address">{{ sede.DIRECCION }}</div>
-            
-            <table class="price-table">
-                <tr>
-                    <th>SAIYAN</th>
-                    <th>SUPER SAIYAN</th>
-                    <th>SUPER SAIYAN GOD</th>
-                </tr>
-                <tr>
-                    <td>S/49.90</td>
-                    <td>S/99.90</td>
-                    <td>S/149.90</td>
-                </tr>
-            </table>
-            
-            <div class="button-group">
-                <a href="{{ url_for('planes') }}">
-                    <button class="btn green-btn">Inscríbete ya!</button>
+     <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#titulo" class="footer-link">
+                    <i class="fas fa-arrow-up"></i> Ir a comienzo
+                </a>
+                <a href="mailto:francosolimano10@gmail.com" class="footer-link">
+                    <i class="fas fa-envelope"></i> Contáctame aquí
                 </a>
             </div>
+            <div class="social-links">
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p class="copyright">Copyright © 2025 DragonFit. Todos los derechos reservados.</p>
         </div>
-        {% endfor %}
-    </div>
+    </footer>
 </body>
 </html>

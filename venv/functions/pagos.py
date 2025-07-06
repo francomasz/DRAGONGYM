@@ -1,29 +1,40 @@
 from flask import flash, redirect, url_for
 import MySQLdb
 from datetime import datetime
+import logging
 
-def pago_logic(mysql, request):
-    if request.method == 'POST':
-        try:
-            cursor = mysql.connection.cursor()
-            
-            cod_pago = request.form['cod_pago']
-            id_metodo = request.form['id_metodo']
-            monto = request.form['monto']
-            fecha_pago = request.form.get('fecha_pago', datetime.now().date())
-            fecha_vencimiento = request.form['fecha_vencimiento']
-            
-            cursor.execute('''
-                INSERT INTO PAGO (COD_PAGO, ID_METODO, MONTO, FECHA_PAGO, FECHA_VENCIMIENTO)
-                VALUES (%s, %s, %s, %s, %s)
-            ''', (cod_pago, id_metodo, monto, fecha_pago, fecha_vencimiento))
-            
-            mysql.connection.commit()
-            flash('Pago registrado con éxito!', 'success')
-            return redirect(url_for('pagos'))
-            
-        except MySQLdb.Error as e:
-            mysql.connection.rollback()
-            flash(f'Error al registrar pago: {str(e)}', 'error')
-    
-    return None
+def registrar_pago(mysql, request_data):
+    """
+    Registra un pago en la base de datos.
+    """
+    try:
+        cursor = mysql.connection.cursor()
+        
+        query = """
+        INSERT INTO PAGO (
+            COD_PAGO, ID_METODO, MONTO, 
+            FECHA_PAGO, FECHA_VENCIMIENTO, ESTADO
+        ) VALUES (%s, %s, %s, %s, %s, 'COMPLETADO')
+        """
+        cursor.execute(query, (
+            request_data['codPago'],
+            request_data['metodoPago'],
+            request_data['monto'],
+            request_data['fechaPago'],
+            request_data['fechaVencimiento']
+        ))
+        mysql.connection.commit()
+        
+        return True, "Pago registrado exitosamente"
+        
+    except mysql.connector.Error as err:
+        mysql.connection.rollback()
+        logging.error(f"Error MySQL: {err}")
+        return False, f"Error en la base de datos: {err.msg}"
+        
+    except Exception as e:
+        logging.error(f"Error inesperado: {e}")
+        return False, f"Error inesperado: {str(e)}"
+        
+    finally:
+        cursor.close()

@@ -1,17 +1,122 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Registro de Pagos</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DragonGym - Pagos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/static/pagos.css">
 </head>
 <body>
-    <h1>Registrar Nuevo Pago</h1>
-    <form method="POST">
-        <input type="text" name="cod_pago" placeholder="Código de Pago" required>
-        <input type="number" name="id_metodo" placeholder="ID Método de Pago" required>
-        <input type="number" step="0.01" name="monto" placeholder="Monto" required>
-        <input type="date" name="fecha_pago" placeholder="Fecha de Pago">
-        <input type="date" name="fecha_vencimiento" placeholder="Fecha de Vencimiento" required>
-        <button type="submit">Registrar Pago</button>
-    </form>
+    <header> 
+        <h1 id="titulo">Bienvenido a DragonFit</h1>
+    </header>
+    
+    <div class="container">
+        <div class="dragon-header">
+            <h1><i class="fas fa-dragon dragon-icon"></i> Pago DragonGym</h1>
+        </div>
+
+        <form id="pagoForm">
+            <!-- Sección de Datos Ficticios (solo UI) -->
+            <fieldset class="form-section">
+                <legend><i class="fas fa-user"></i> Datos de Facturación</legend>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="nombres">Nombres:</label>
+                        <input type="text" id="nombres" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="apellidos">Apellidos:</label>
+                        <input type="text" id="apellidos" >
+                    </div>
+                    <div class="form-group">
+                        <label for="direccion">Dirección:</label>
+                        <input type="text" id="direccion" >
+                    </div>
+                    <div class="form-group">
+                        <label for="distrito">Distrito:</label>
+                        <input type="text" id="distrito" >
+
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Sección de Pago (datos reales para BD) -->
+            <fieldset class="form-section">
+                <legend><i class="fas fa-credit-card"></i> Datos de Pago</legend>
+                <div class="form-group">
+                    <label for="metodoPago">Método de Pago:</label>
+                    <select id="metodoPago" name="metodoPago" required>
+                        <option value="">Seleccione...</option>
+                        <option value="1">Tarjeta de Crédito</option>
+                        <option value="2">Boleta</option>
+                        <option value="3">Factura</option>
+                    </select>
+                </div>
+
+                <!-- Campos ficticios de tarjeta (solo UI) -->
+                <div id="tarjetaFields" class="tarjeta-fields" style="display: none;">
+                    <div class="form-group">
+                        <label>Número de Tarjeta:</label>
+                        <input type="text" >
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Vencimiento (MM/AA):</label>
+                            <input type="text" >
+                        </div>
+                        <div class="form-group">
+                            <label>CVV:</label>
+                            <input type="password" >
+                        </div>
+                    </div>
+                </div>
+
+                            <div class="form-group">
+                <label for="monto">Monto (S/):</label>
+                <select id="monto" name="monto" required>
+                    <option value="">Seleccione un monto...</option>
+                    <option value="49.90">S/ 49.90 - Membresía Saiyan</option>
+                    <option value="99.90">S/ 99.90 - Membresía Super Sayian</option>
+                    <option value="149.90">S/ 149.90 - Membresía Super Saiyan God</option>
+                </select>
+            </div>
+            </fieldset>
+
+            <div class="form-footer">
+                <button type="submit" class="btn-pagar">
+                    <i class="fas fa-fire"></i> Confirmar Pago
+                </button>
+                <div id="mensaje"></div>
+            </div>
+        </form>
+    </div>
+
+     <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#titulo" class="footer-link">
+                    <i class="fas fa-arrow-up"></i> Ir a comienzo
+                </a>
+                <a href="mailto:francosolimano10@gmail.com" class="footer-link">
+                    <i class="fas fa-envelope"></i> Contáctame aquí
+                </a>
+            </div>
+            <div class="social-links">
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p class="copyright">Copyright © 2025 DragonFit. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/pagos.js') }}"></script>
 </body>
 </html>

@@ -1,57 +1,24 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask
 from flask_mysqldb import MySQL
-from functions.clientes import register_client as cliente_logic
-from functions.sedes import sede_logic
-from functions.planes import plan_logic
-from functions.pagos import pago_logic
+from routes.routes import configure_all_routes
+from dotenv import load_dotenv
+import os
+
+# Cargamos variables de entorno
+load_dotenv()
 
 app = Flask(__name__)
 
-# Configuración MySQL
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'solimano123'
-app.config['MYSQL_DB'] = 'BD_GYM'
+# Configuración MySQL desde variables de entorno
+app.config['MYSQL_HOST'] = os.getenv('DB_HOST')
+app.config['MYSQL_USER'] = os.getenv('DB_USER')
+app.config['MYSQL_PASSWORD'] = os.getenv('DB_PASSWORD')
+app.config['MYSQL_DB'] = os.getenv('DB_NAME')
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
-app.secret_key = 'soliman0123'
+app.secret_key = os.getenv('SECRET_KEY')
 
 mysql = MySQL(app)
-
-@app.route('/')
-def index():
-    return render_template('index.html')
-
-# Rutas para Clientes
-@app.route('/clientes', methods=['GET', 'POST'])
-def clientes():
-    result = cliente_logic(mysql, request)
-    if result:
-        return result
-    return render_template('clientes.html')
-
-# Rutas para Sedes
-@app.route('/sedes', methods=['GET', 'POST'])
-def sedes():
-    sedes = sede_logic(mysql, request)
-    if request.method == 'POST' and isinstance(sedes, redirect):
-        return sedes
-    return render_template('sedes.html', sedes=sedes)
-
-# Rutas para Planes
-@app.route('/planes', methods=['GET', 'POST'])
-def planes():
-    result = plan_logic(mysql, request)
-    if result:
-        return result
-    return render_template('planes.html')
-
-# Rutas para Pagos
-@app.route('/pagos', methods=['GET', 'POST'])
-def pagos():
-    result = pago_logic(mysql, request)
-    if result:
-        return result
-    return render_template('pagos.html')
+configure_all_routes(app, mysql)
 
 if __name__ == '__main__':
     app.run(debug=True)

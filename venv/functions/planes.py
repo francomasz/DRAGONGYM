@@ -1,5 +1,3 @@
-# /home/franco/Escritorio/PAGINA WEB/venv/functions/planes.py
-# VERSIÓN RECOMENDADA
 
 from flask import render_template, redirect, url_for, flash
 import MySQLdb

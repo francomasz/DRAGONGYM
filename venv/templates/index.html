@@ -2,37 +2,83 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DragonFit - Inicio</title>
     <link rel="stylesheet" href="/static/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <header> 
-    <h1 id="titulo">Bienvenido a DragonFit</h1>
+    <header class="compact-header">
+        <div class="header-content">
+            <h1 id="titulo">Bienvenido a DragonFit</h1>
+        </div>
     </header>
-    <nav>
-        <a href="{{ url_for('sedes') }}" ><img id="porta" src="/static/portada.jpg"></a>
-    </nav>
-    
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            <div class="flash-messages">
-                {% for category, message in messages %}
-                    <div class="alert alert-{{ category }}">{{ message }}</div>
-                {% endfor %}
-            </div>
-        {% endif %}
-    {% endwith %}
-    
-</body>
-<footer> 
-    <section> 
-        <a href="#titulo">ir a comienzo</a>
-        <a href="mailto:francosolimano10@gmail.com">Contactame aqui</a>
-    </section>
-    <p>Copyright 2025</p>
-</footer>
 
+    <main class="main-content">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <section class="feature-section">
+            <a href="{{ url_for('sedes') }}" class="feature-card">
+                <img src="/static/portada.jpg" alt="Nuestro gimnasio" class="feature-image">
+                <div class="feature-overlay">
+                    <h2>Descubre nuestras instalaciones</h2>
+                    <p>Conoce nuestro espacio de entrenamiento premium</p>
+                </div>
+            </a>
+        </section>
+
+        <section class="sede-section">
+            <h2 class="section-title">Encuentra la sede más cercana</h2>
+            <div class="sede-container">
+                <img src="/static/portada2.png" alt="Nuestras sedes" class="sede-image">
+                <a href="{{ url_for('sedes') }}" class="sede-button">
+                    <i class="fas fa-search"></i> Buscar sede
+                </a>
+            </div>
+        </section>
+
+        <section class="plans-section">
+            <div class="plans-header">
+                <h2 class="section-title">Elige tu Plan</h2>
+                <p class="section-subtitle">¡Comienza a entrenar con nosotros! Elige el plan que quieras y nos vemos en la sede de tu preferencia</p>
+            </div>
+            <a href="{{ url_for('sedes') }}" class="plans-card">
+                <img src="/static/planes3.png" alt="Nuestros planes" class="plans-image">
+                <div class="plans-overlay">
+                    <span>Ver planes disponibles <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </a>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#titulo" class="footer-link">
+                    <i class="fas fa-arrow-up"></i> Ir a comienzo
+                </a>
+                <a href="mailto:francosolimano10@gmail.com" class="footer-link">
+                    <i class="fas fa-envelope"></i> Contáctame aquí
+                </a>
+            </div>
+            <div class="social-links">
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p class="copyright">Copyright © 2025 DragonFit. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
 </html>

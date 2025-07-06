@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planes Disponibles</title>
-    <!-- Enlace a Tailwind CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <!-- Enlace a la fuente Inter de Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
@@ -12,9 +15,11 @@
     <link rel="stylesheet" href="/static/planes.css">
 </head>
 <body>
+    <header> 
+    <h1 id="titulo">Bienvenido a DragonFit</h1>
+    </header>
+    <h1>SELECCIONA TU PLAN</h1>
     <div class="container">
-        <h1>SELECCIONA TU PLAN</h1>
-
         <div class="plan-container">
             <!-- Plan 1 -->
             <div class="plan-card">
@@ -104,30 +109,25 @@
             </div>
         </div>
 
-        <div class="checkout-section">
-            <div class="checkout-title">Detalles de la compra</div>
-            <div class="checkout-details">
-                <div><strong>Mail Plaza Huancayo</strong></div>
-                <div>As. Ferrocarril 145, Huancayo, Junín, 145 - Huancayo, J...</div>
-                <div><a href="#">Ver academia</a></div>
-            </div>
-
-            <div class="checkout-details">
-                <div><strong>Plan Super Saiyan god</strong></div>
-                <div>Disfruta de beneficios exclusivos con el Plan Black:</div>
-                <div class="mt-2"> {# Replaced style="margin-top: 10px;" with Tailwind class #}
-                    <input type="checkbox" id="add-benefits">
-                    <label for="add-benefits">5 invitados al mes en el gimnasio que quieras</label>
-                </div>
-            </div>
-
-            <div class="mt-5"> {# Replaced style="margin-top: 20px;" with Tailwind class #}
-                <div><strong>Añadir cupón</strong></div>
-                <input type="text" placeholder="Ingresa tu cupón" class="p-2 w-full mt-1"> {# Replaced inline style with Tailwind classes #}
-            </div>
-
-            <button class="continue-btn">Continuar al registro</button>
-        </div>
     </div>
+     <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#titulo" class="footer-link">
+                    <i class="fas fa-arrow-up"></i> Ir a comienzo
+                </a>
+                <a href="mailto:francosolimano10@gmail.com" class="footer-link">
+                    <i class="fas fa-envelope"></i> Contáctame aquí
+                </a>
+            </div>
+            <div class="social-links">
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p class="copyright">Copyright © 2025 DragonFit. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
 </body>
 </html>
